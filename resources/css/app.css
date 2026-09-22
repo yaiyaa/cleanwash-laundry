@@ -1,0 +1,1354 @@
+@import 'tailwindcss';
+
+
+/* =====================================================
+    CLEANWASH DESIGN SYSTEM
+   ===================================================== */
+
+:root {
+    --cleanwash-primary: #0f6fb5;
+    --cleanwash-primary-dark: #07558f;
+    --cleanwash-primary-light: #e8f5ff;
+
+    --cleanwash-blue-soft: #f3faff;
+
+    --cleanwash-text: #183b56;
+    --cleanwash-text-muted: #6b8193;
+
+    --cleanwash-border: #dcecf7;
+
+    --cleanwash-success: #16a36a;
+    --cleanwash-warning: #f59e0b;
+    --cleanwash-danger: #dc2626;
+
+    --cleanwash-radius: 14px;
+}
+
+
+/* =====================================================
+   GLOBAL
+   ===================================================== */
+
+body {
+    background-color: var(--cleanwash-blue-soft);
+    color: var(--cleanwash-text);
+}
+
+
+/* =====================================================
+   CLEANWASH CARD
+   ===================================================== */
+
+.cleanwash-card {
+    background: #ffffff;
+    border: 1px solid var(--cleanwash-border);
+    border-radius: var(--cleanwash-radius);
+    box-shadow: 0 4px 16px rgba(15, 111, 181, 0.06);
+}
+
+
+/* =====================================================
+   CLEANWASH BUTTON
+   ===================================================== */
+
+.cleanwash-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    background-color: var(--cleanwash-primary);
+    color: #ffffff;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-btn:hover {
+    background-color: var(--cleanwash-primary-dark);
+    transform: translateY(-1px);
+}
+
+
+/* =====================================================
+    SECONDARY BUTTON
+   ===================================================== */
+
+.cleanwash-btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eef5f9;
+    color: var(--cleanwash-text);
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-btn-secondary:hover {
+    background-color: #dfeef6;
+}
+
+
+/* =====================================================
+   DANGER BUTTON
+   ===================================================== */
+
+.cleanwash-btn-danger {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--cleanwash-danger);
+    color: #ffffff;
+
+    padding: 9px 16px;
+
+    border-radius: 8px;
+    border: none;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-btn-danger:hover {
+    background-color: #b91c1c;
+}
+
+
+/* =====================================================
+   INPUT
+   ===================================================== */
+
+.cleanwash-input {
+    width: 100%;
+
+    border: 1px solid var(--cleanwash-border);
+    border-radius: 8px;
+
+    padding: 10px 12px;
+
+    background-color: #ffffff;
+    color: var(--cleanwash-text);
+
+    outline: none;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-input:focus {
+    border-color: var(--cleanwash-primary);
+
+    box-shadow:
+        0 0 0 3px rgba(15, 111, 181, 0.10);
+}
+
+
+/* =====================================================
+   LABEL
+   ===================================================== */
+
+.cleanwash-label {
+    display: block;
+
+    margin-bottom: 7px;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    color: var(--cleanwash-text);
+}
+
+
+/* =====================================================
+    PAGE HEADER
+   ===================================================== */
+
+.cleanwash-page-header {
+    position: relative;
+
+    overflow: hidden;
+
+    background: linear-gradient(
+        135deg,
+        #e8f6ff 0%,
+        #f7fcff 100%
+    );
+
+    border: 1px solid var(--cleanwash-border);
+    border-radius: 16px;
+
+    padding: 24px;
+
+    margin-bottom: 24px;
+}
+
+.cleanwash-page-header::after {
+    content: '';
+
+    position: absolute;
+
+    width: 130px;
+    height: 130px;
+
+    right: -35px;
+    top: -55px;
+
+    background: rgba(96, 189, 244, 0.16);
+
+    border-radius: 50%;
+}
+
+.cleanwash-page-header::before {
+    content: '';
+
+    position: absolute;
+
+    width: 55px;
+    height: 55px;
+
+    right: 80px;
+    bottom: -25px;
+
+    background: rgba(96, 189, 244, 0.13);
+
+    border-radius: 50%;
+}
+
+
+/* =====================================================
+   STAT CARD
+   ===================================================== */
+
+.cleanwash-stat-card {
+    background: #ffffff;
+
+    border: 1px solid var(--cleanwash-border);
+    border-radius: 14px;
+
+    padding: 20px;
+
+    box-shadow: 0 4px 14px rgba(15, 111, 181, 0.05);
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-stat-card:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 8px 20px rgba(15, 111, 181, 0.10);
+}
+
+
+/* =====================================================
+   ICON BOX
+   ===================================================== */
+
+.cleanwash-icon {
+    width: 44px;
+    height: 44px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background-color: var(--cleanwash-primary-light);
+    color: var(--cleanwash-primary);
+}
+
+
+/* =====================================================
+   STATUS BADGE
+   ===================================================== */
+
+.cleanwash-status {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 10px;
+
+    border-radius: 999px;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.cleanwash-status-diterima {
+    background-color: #e8f5ff;
+    color: #0f6fb5;
+}
+
+.cleanwash-status-dicuci {
+    background-color: #fff7df;
+    color: #b77900;
+}
+
+.cleanwash-status-disetrika {
+    background-color: #f3eaff;
+    color: #7c3aed;
+}
+
+.cleanwash-status-selesai {
+    background-color: #e7f8ef;
+    color: #16804f;
+}
+
+.cleanwash-status-diambil {
+    background-color: #eef2f5;
+    color: #526575;
+}
+
+
+/* =====================================================
+   TABLE
+   ===================================================== */
+
+.cleanwash-table {
+    width: 100%;
+
+    border-collapse: separate;
+    border-spacing: 0;
+
+    overflow: hidden;
+}
+
+.cleanwash-table th {
+    background-color: #f3f9fd;
+
+    color: #557184;
+
+    font-size: 13px;
+    font-weight: 700;
+
+    padding: 13px 16px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--cleanwash-border);
+}
+
+.cleanwash-table td {
+    padding: 14px 16px;
+
+    color: #385469;
+
+    font-size: 14px;
+
+    border-bottom: 1px solid #edf4f8;
+}
+
+.cleanwash-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.cleanwash-table tbody tr:hover {
+    background-color: #f8fcff;
+}
+
+.cleanwash-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =====================================================
+   DECORATIVE BUBBLE
+   ===================================================== */
+
+.cleanwash-bubble {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(87, 185, 241, 0.14);
+
+    pointer-events: none;
+}
+
+.cleanwash-bubble-small {
+    width: 18px;
+    height: 18px;
+}
+
+.cleanwash-bubble-medium {
+    width: 32px;
+    height: 32px;
+}
+
+.cleanwash-bubble-large {
+    width: 70px;
+    height: 70px;
+}
+
+/* =====================================================
+   CLEANWASH SIDEBAR
+   ===================================================== */
+
+.cleanwash-sidebar {
+    position: fixed;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 250px;
+
+    background: #ffffff;
+
+    border-right: 1px solid #dcecf7;
+
+    display: flex;
+    flex-direction: column;
+
+    z-index: 50;
+}
+
+
+/* =====================================================
+   LOGO
+   ===================================================== */
+
+.cleanwash-logo {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+
+    padding: 0 24px;
+
+    border-bottom: 1px solid #edf4f8;
+}
+
+.cleanwash-logo-link {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    text-decoration: none;
+}
+
+.cleanwash-logo-icon {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #e8f5ff;
+
+    color: #0f6fb5;
+}
+
+.cleanwash-logo-link span {
+    font-size: 21px;
+
+    font-weight: 700;
+
+    color: #0f6fb5;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =====================================================
+   MENU
+   ===================================================== */
+
+.cleanwash-menu {
+    padding: 24px 14px;
+
+    flex: 1;
+}
+
+.cleanwash-menu-item {
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 7px;
+
+    border-radius: 10px;
+
+    color: #607789;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-menu-item:hover {
+    background: #f3faff;
+
+    color: #0f6fb5;
+}
+
+.cleanwash-menu-item.active {
+    background: #e8f5ff;
+
+    color: #0f6fb5;
+
+    box-shadow:
+        inset 3px 0 0 #0f6fb5;
+}
+
+
+/* =====================================================
+   USER AREA
+   ===================================================== */
+
+.cleanwash-user {
+    padding: 18px 16px;
+
+    border-top: 1px solid #edf4f8;
+}
+
+.cleanwash-user-info {
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    margin-bottom: 14px;
+}
+
+.cleanwash-avatar {
+    width: 38px;
+    height: 38px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e8f5ff;
+
+    color: #0f6fb5;
+
+    font-size: 14px;
+
+    font-weight: 700;
+}
+
+.cleanwash-user-text {
+    min-width: 0;
+}
+
+.cleanwash-user-text p {
+    margin: 0;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    color: #183b56;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+.cleanwash-user-text span {
+    display: block;
+
+    margin-top: 2px;
+
+    font-size: 11px;
+
+    color: #8ba0af;
+}
+
+
+/* =====================================================
+   PROFILE / LOGOUT
+   ===================================================== */
+
+.cleanwash-user-link {
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 9px 10px;
+
+    border-radius: 8px;
+
+    background: transparent;
+
+    border: none;
+
+    color: #607789;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-user-link:hover {
+    background: #f3faff;
+
+    color: #0f6fb5;
+}
+
+.cleanwash-logout:hover {
+    background: #fff3f3;
+
+    color: #dc2626;
+}
+
+
+/* =====================================================
+    MAIN CONTENT
+   ===================================================== */
+
+@media (min-width: 640px) {
+
+    body {
+        padding-left: 250px;
+    }
+
+}
+
+/* =====================================================
+   CLEANWASH DASHBOARD
+   ===================================================== */
+
+.cleanwash-dashboard {
+    min-height: calc(100vh - 20px);
+
+    background:
+        radial-gradient(
+            circle at 90% 10%,
+            rgba(111, 199, 245, 0.10),
+            transparent 25%
+        ),
+        #f3faff;
+}
+
+
+/* =====================================================
+   HERO
+   ===================================================== */
+
+.cleanwash-hero {
+    position: relative;
+
+    min-height: 270px;
+
+    overflow: hidden;
+
+    display: flex;
+    align-items: center;
+
+    padding: 42px 48px;
+
+    border-radius: 20px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #e5f5ff 0%,
+            #f8fcff 100%
+        );
+
+    border: 1px solid #d7edf9;
+
+    box-shadow:
+        0 8px 24px rgba(15, 111, 181, 0.06);
+}
+
+.cleanwash-hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    max-width: 570px;
+}
+
+.cleanwash-hero-small {
+    margin: 0 0 8px;
+
+    color: #4c9aca;
+
+    font-size: 11px;
+
+    font-weight: 800;
+
+    letter-spacing: 1.5px;
+}
+
+.cleanwash-hero h1 {
+    margin: 0;
+
+    color: #183b56;
+
+    font-size: 32px;
+
+    line-height: 1.2;
+
+    font-weight: 700;
+}
+
+.cleanwash-hero h1 span {
+    color: #0f6fb5;
+}
+
+.cleanwash-hero-description {
+    margin-top: 12px;
+
+    color: #61798b;
+
+    font-size: 15px;
+
+    line-height: 1.7;
+}
+
+.cleanwash-hero-button {
+    display: inline-flex;
+
+    align-items: center;
+
+    margin-top: 20px;
+
+    padding: 10px 17px;
+
+    border-radius: 9px;
+
+    background: #0f6fb5;
+
+    color: white;
+
+    text-decoration: none;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    box-shadow:
+        0 5px 14px rgba(15, 111, 181, 0.20);
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-hero-button:hover {
+    background: #07558f;
+
+    transform: translateY(-2px);
+}
+
+
+/* =====================================================
+   HERO BUBBLES
+   ===================================================== */
+
+.cleanwash-hero-bubble {
+    position: absolute;
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.bubble-1 {
+    width: 150px;
+    height: 150px;
+
+    right: 80px;
+    top: -90px;
+
+    background: rgba(72, 181, 241, 0.13);
+}
+
+.bubble-2 {
+    width: 70px;
+    height: 70px;
+
+    right: 250px;
+    bottom: -30px;
+
+    background: rgba(72, 181, 241, 0.12);
+}
+
+.bubble-3 {
+    width: 22px;
+    height: 22px;
+
+    right: 45px;
+    top: 35px;
+
+    border: 3px solid rgba(72, 181, 241, 0.20);
+
+    background: transparent;
+}
+
+
+/* =====================================================
+   WASHING MACHINE ILLUSTRATION
+   ===================================================== */
+
+.cleanwash-washer {
+    position: absolute;
+
+    right: 65px;
+    bottom: 0;
+
+    width: 210px;
+    height: 220px;
+
+    z-index: 4;
+}
+
+.washer-top {
+    position: absolute;
+
+    top: 12px;
+    left: 25px;
+
+    width: 160px;
+    height: 20px;
+
+    border-radius: 7px 7px 2px 2px;
+
+    background: #8ed1f4;
+}
+
+.washer-base {
+    position: absolute;
+
+    left: 22px;
+    bottom: 0;
+
+    width: 166px;
+    height: 170px;
+
+    border-radius: 12px 12px 7px 7px;
+
+    background: linear-gradient(
+        180deg,
+        #54b5eb,
+        #1885ca
+    );
+
+    box-shadow:
+        0 12px 20px rgba(15, 111, 181, 0.18);
+}
+
+.washer-circle {
+    position: absolute;
+
+    left: 48px;
+    top: 50px;
+
+    width: 115px;
+    height: 115px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e9f8ff;
+
+    border: 7px solid #d1effd;
+
+    z-index: 5;
+}
+
+.washer-door {
+    width: 82px;
+    height: 82px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #82cff3;
+
+    border: 5px solid #3ca8e2;
+}
+
+.washer-inner {
+    position: relative;
+
+    width: 57px;
+    height: 57px;
+
+    overflow: hidden;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle at 35% 30%,
+            #d9f5ff,
+            #52b5e8 70%
+        );
+}
+
+.washer-bubble {
+    position: absolute;
+
+    border-radius: 50%;
+
+    background: rgba(255,255,255,0.55);
+}
+
+.bubble-a {
+    width: 10px;
+    height: 10px;
+
+    left: 12px;
+    top: 15px;
+}
+
+.bubble-b {
+    width: 6px;
+    height: 6px;
+
+    right: 14px;
+    top: 27px;
+}
+
+.bubble-c {
+    width: 14px;
+    height: 14px;
+
+    left: 28px;
+    bottom: 9px;
+}
+
+
+/* =====================================================
+   STAT CARDS
+   ===================================================== */
+
+.cleanwash-dashboard-stat {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 20px;
+
+    min-height: 115px;
+
+    background: #ffffff;
+
+    border: 1px solid #dcecf7;
+
+    border-radius: 14px;
+
+    box-shadow:
+        0 4px 15px rgba(15, 111, 181, 0.05);
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-dashboard-stat:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 9px 22px rgba(15, 111, 181, 0.09);
+}
+
+.cleanwash-stat-icon {
+    width: 47px;
+    height: 47px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 13px;
+}
+
+.cleanwash-stat-icon.blue {
+    background: #e8f5ff;
+    color: #0f6fb5;
+}
+
+.cleanwash-stat-icon.purple {
+    background: #f2eaff;
+    color: #7c3aed;
+}
+
+.cleanwash-stat-icon.orange {
+    background: #fff3df;
+    color: #e58a00;
+}
+
+.cleanwash-stat-icon.green {
+    background: #e7f8ef;
+    color: #16a36a;
+}
+
+.cleanwash-dashboard-stat p {
+    margin: 0;
+
+    color: #718797;
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+.cleanwash-dashboard-stat h3 {
+    margin: 4px 0;
+
+    color: #183b56;
+
+    font-size: 27px;
+
+    line-height: 1;
+
+    font-weight: 700;
+}
+
+.cleanwash-dashboard-stat span {
+    color: #9aaab5;
+
+    font-size: 11px;
+}
+
+
+/* =====================================================
+   SECTION CARD
+   ===================================================== */
+
+.cleanwash-section-card {
+    position: relative;
+
+    overflow: hidden;
+
+    padding: 24px;
+
+    background: #ffffff;
+
+    border: 1px solid #dcecf7;
+
+    border-radius: 16px;
+
+    box-shadow:
+        0 4px 16px rgba(15, 111, 181, 0.05);
+}
+
+.cleanwash-section-header {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+}
+
+.cleanwash-section-header h2 {
+    margin: 0;
+
+    color: #183b56;
+
+    font-size: 18px;
+
+    font-weight: 700;
+}
+
+.cleanwash-section-header p {
+    margin: 5px 0 0;
+
+    color: #8295a3;
+
+    font-size: 12px;
+}
+
+.cleanwash-section-bubble {
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #e8f5ff;
+
+    font-size: 20px;
+}
+
+
+/* =====================================================
+   QUICK MENU
+   ===================================================== */
+
+.cleanwash-quick-menu {
+    position: relative;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 17px;
+
+    border: 1px solid #e4f0f6;
+
+    border-radius: 12px;
+
+    background: #fbfdff;
+
+    text-decoration: none;
+
+    transition: all 0.2s ease;
+}
+
+.cleanwash-quick-menu:hover {
+    background: #f3faff;
+
+    border-color: #c9e6f7;
+
+    transform: translateY(-2px);
+}
+
+.cleanwash-quick-icon {
+    width: 44px;
+    height: 44px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 11px;
+}
+
+.cleanwash-quick-icon.blue {
+    background: #e8f5ff;
+    color: #0f6fb5;
+}
+
+.cleanwash-quick-icon.purple {
+    background: #f2eaff;
+    color: #7c3aed;
+}
+
+.cleanwash-quick-icon.orange {
+    background: #fff3df;
+    color: #e58a00;
+}
+
+.cleanwash-quick-menu h3 {
+    margin: 0;
+
+    color: #24465d;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.cleanwash-quick-menu p {
+    margin: 3px 0 0;
+
+    color: #91a1ad;
+
+    font-size: 11px;
+}
+
+.quick-arrow {
+    margin-left: auto;
+
+    color: #9bb5c4;
+
+    font-size: 18px;
+
+    transition: transform 0.2s ease;
+}
+
+.cleanwash-quick-menu:hover .quick-arrow {
+    transform: translateX(4px);
+
+    color: #0f6fb5;
+}
+
+
+/* =====================================================
+   INFORMATION CARD
+   ===================================================== */
+
+.cleanwash-info-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 18px 22px;
+
+    border: 1px solid #d8edf9;
+
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #edf9ff,
+            #ffffff
+        );
+}
+
+.cleanwash-info-icon {
+    width: 43px;
+    height: 43px;
+
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 12px;
+
+    background: #dff3ff;
+
+    font-size: 20px;
+}
+
+.cleanwash-info-card h3 {
+    margin: 0;
+
+    color: #24465d;
+
+    font-size: 13px;
+
+    font-weight: 700;
+}
+
+.cleanwash-info-card p {
+    margin: 3px 0 0;
+
+    color: #7f929f;
+
+    font-size: 11px;
+
+    line-height: 1.5;
+}
+
+
+/* =====================================================
+    RESPONSIVE
+   ===================================================== */
+
+@media (max-width: 900px) {
+
+    .cleanwash-washer {
+        right: 20px;
+
+        transform: scale(0.75);
+
+        transform-origin: bottom right;
+    }
+
+    .cleanwash-hero-content {
+        max-width: 65%;
+    }
+
+}
+
+@media (max-width: 640px) {
+
+    .cleanwash-hero {
+        padding: 30px 24px;
+
+        min-height: 300px;
+    }
+
+    .cleanwash-hero h1 {
+        font-size: 25px;
+    }
+
+    .cleanwash-hero-content {
+        max-width: 100%;
+    }
+
+    .cleanwash-washer {
+        display: none;
+    }
+
+    .cleanwash-section-card {
+        padding: 18px;
+    }
+
+    .cleanwash-info-card {
+        align-items: flex-start;
+    }
+
+}
+
+/* =====================================================
+    CLEANWASH MENU SECTION
+===================================================== */
+
+.cleanwash-menu-section {
+    margin-top: 26px;
+    margin-bottom: 10px;
+    padding: 0 16px;
+
+    font-size: 11px;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    color: #6b8193;
+}
