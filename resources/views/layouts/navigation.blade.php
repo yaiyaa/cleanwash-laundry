@@ -307,7 +307,7 @@
                 </p>
 
                 <span>
-                    Administrator
+
                 </span>
 
             </div>
