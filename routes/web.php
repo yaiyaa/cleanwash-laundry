@@ -45,9 +45,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('paket', PaketController::class);
 
     // Transaksi Laundry
-    Route::resource('transaksi', TransaksiController::class);
-    Route::post('/transaksi/{transaksi}/whatsapp', [TransaksiController::class, 'sendWhatsApp'])
-        ->name('transaksi.whatsapp');
+    Route::resource('transaksi', TransaksiController::class)
+        ->only(['index', 'create', 'store', 'show', 'destroy']);
+    Route::post('/transaksi/{transaksi}/selesai', [TransaksiController::class, 'selesai'])
+        ->name('transaksi.selesai');
+    Route::post('/transaksi/{transaksi}/diambil', [TransaksiController::class, 'diambil'])
+        ->name('transaksi.diambil');
     Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayat'])
         ->name('transaksi.riwayat');
 

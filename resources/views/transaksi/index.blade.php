@@ -30,12 +30,9 @@
 
                 <div
                     class="relative overflow-hidden px-6 py-7 sm:px-8"
-                    style="
-                        background: linear-gradient(110deg, #e8f5ff, #ffffff);
-                    "
+                    style="background: linear-gradient(110deg, #e8f5ff, #ffffff);"
                 >
 
-                    {{-- BUBBLE --}}
                     <div
                         class="absolute -right-8 -top-10 h-32 w-32 rounded-full"
                         style="background-color: rgba(15,111,181,0.08);"
@@ -46,18 +43,13 @@
                         style="background-color: rgba(76,154,202,0.07);"
                     ></div>
 
-
                     <div class="relative flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
 
                         <div class="flex items-center gap-4">
 
-                            {{-- ICON --}}
                             <div
                                 class="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl"
-                                style="
-                                    background-color: #dff2ff;
-                                    color: #0f6fb5;
-                                "
+                                style="background-color: #dff2ff; color: #0f6fb5;"
                             >
 
                                 <svg
@@ -80,11 +72,9 @@
                                         stroke-width="2"
                                         d="M8 7h8M8 11h8M8 15h5"
                                     />
-
                                 </svg>
 
                             </div>
-
 
                             <div>
 
@@ -176,6 +166,20 @@
 
                 </div>
 
+            @endif
+
+            @if (session('warning'))
+                <div
+                    class="mb-6 flex items-center gap-3 rounded-xl border px-4 py-3"
+                    style="
+                        background-color: #fff7ed;
+                        border-color: #fed7aa;
+                    "
+                >
+                    <p class="text-sm font-semibold" style="color: #c2410c;">
+                        {{ session('warning') }}
+                    </p>
+                </div>
             @endif
 
 
@@ -515,79 +519,70 @@
 
                                         <div class="flex items-center justify-center gap-2">
 
+                                            {{-- STATUS BERIKUTNYA --}}
+                                            @if ($transaksi->status === 'Selesai')
+                                                <form
+                                                    action="{{ route('transaksi.diambil', $transaksi) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Tandai laundry ini sudah diambil pelanggan?')"
+                                                >
+                                                    @csrf
+
+                                                    <button
+                                                        type="submit"
+                                                        class="inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-bold transition"
+                                                        style="
+                                                            background-color: #fff7ed;
+                                                            color: #c2410c;
+                                                            border: none;
+                                                            cursor: pointer;
+                                                        "
+                                                    >
+                                                        Diambil
+                                                    </button>
+                                                </form>
+                                            @elseif ($transaksi->status !== 'Diambil')
+                                                <form
+                                                    action="{{ route('transaksi.selesai', $transaksi) }}"
+                                                    method="POST"
+                                                    onsubmit="return confirm('Tandai laundry ini sebagai selesai dan kirim WhatsApp?')"
+                                                >
+                                                    @csrf
+
+                                                    <button
+                                                        type="submit"
+                                                        class="inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-bold transition"
+                                                        style="
+                                                            background-color: #ecfdf5;
+                                                            color: #15803d;
+                                                            border: none;
+                                                            cursor: pointer;
+                                                        "
+                                                    >
+                                                        Selesai
+                                                    </button>
+                                                </form>
+                                            @else
+                                                <span
+                                                    class="inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-bold"
+                                                    style="background-color: #f3f4f6; color: #6b7280;"
+                                                >
+                                                    Diambil
+                                                </span>
+                                            @endif
+
                                             {{-- DETAIL --}}
                                             <a
                                                 href="{{ route('transaksi.show', $transaksi) }}"
                                                 title="Detail"
-                                                class="flex h-9 w-9 items-center justify-center rounded-lg transition"
+                                                class="inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-bold transition"
                                                 style="
                                                     background-color: #e8f5ff;
                                                     color: #0f6fb5;
                                                     text-decoration: none;
                                                 "
                                             >
-
-                                                <svg
-                                                    width="17"
-                                                    height="17"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                                                    />
-
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M2.458 12C3.732 7.943 7.523 5 12 5c4.477 0 8.268 2.943 9.542 7-1.274 4.057-5.065 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                                                    />
-
-                                                </svg>
-
-                                            </a>
-
-
-                                            {{-- EDIT --}}
-                                            <a
-                                                href="{{ route('transaksi.edit', $transaksi) }}"
-                                                title="Edit"
-                                                class="flex h-9 w-9 items-center justify-center rounded-lg transition"
-                                                style="
-                                                    background-color: #f0f7ff;
-                                                    color: #17689f;
-                                                    text-decoration: none;
-                                                "
-                                            >
-
-                                                <svg
-                                                    width="17"
-                                                    height="17"
-                                                    fill="none"
-                                                    stroke="currentColor"
-                                                    viewBox="0 0 24 24"
-                                                >
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5"
-                                                    />
-
-                                                    <path
-                                                        stroke-linecap="round"
-                                                        stroke-linejoin="round"
-                                                        stroke-width="2"
-                                                        d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z"
-                                                    />
-
-                                                </svg>
-
+                                                Detail
                                             </a>
 
 
@@ -604,7 +599,7 @@
                                                 <button
                                                     type="submit"
                                                     title="Hapus"
-                                                    class="flex h-9 w-9 items-center justify-center rounded-lg transition"
+                                                    class="inline-flex items-center justify-center rounded-lg px-3 py-2 text-xs font-bold transition"
                                                     style="
                                                         background-color: #fff5f5;
                                                         color: #dc2626;
@@ -613,21 +608,7 @@
                                                     "
                                                 >
 
-                                                    <svg
-                                                        width="17"
-                                                        height="17"
-                                                        fill="none"
-                                                        stroke="currentColor"
-                                                        viewBox="0 0 24 24"
-                                                    >
-                                                        <path
-                                                            stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            stroke-width="2"
-                                                            d="M3 6h18M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2M19 6l-1 16H6L5 6M10 11v6M14 11v6"
-                                                        />
-                                                    </svg>
-
+                                                    Hapus
                                                 </button>
 
                                             </form>

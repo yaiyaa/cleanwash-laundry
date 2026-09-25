@@ -76,7 +76,7 @@ class TransaksiController extends Controller
             'total_harga' => $totalHarga,
             'tanggal_masuk' => $validated['tanggal_masuk'],
             'tanggal_selesai' => $tanggalSelesai,
-            'status' => 'Diterima',
+            'status' => 'Dicuci',
         ]);
 
         return redirect()
@@ -91,25 +91,38 @@ class TransaksiController extends Controller
         return view('transaksi.show', compact('transaksi'));
     }
 
-    public function sendWhatsApp(Transaksi $transaksi, WhatsAppService $whatsappService)
+    public function selesai(Transaksi $transaksi, WhatsAppService $whatsappService)
     {
-        if ($transaksi->status !== 'Selesai') {
+        if (in_array($transaksi->status, ['Selesai', 'Diambil'], true)) {
             return back()->withErrors([
-                'whatsapp' => 'Pesan WhatsApp hanya dapat dikirim saat status transaksi Selesai.',
+                'status' => 'Transaksi ini sudah selesai atau sudah diambil.',
             ]);
         }
+
+        $transaksi->update(['status' => 'Selesai']);
 
         try {
             $whatsappService->sendLaundryCompletedMessage($transaksi);
         } catch (Throwable $exception) {
             report($exception);
 
+            return back()->with('warning', 'Laundry ditandai selesai, tetapi WhatsApp gagal dikirim.');
+        }
+
+        return back()->with('success', 'Laundry selesai dan pesan WhatsApp berhasil dikirim.');
+    }
+
+    public function diambil(Transaksi $transaksi)
+    {
+        if ($transaksi->status !== 'Selesai') {
             return back()->withErrors([
-                'whatsapp' => 'Pesan gagal dikirim. Pastikan bot WhatsApp sedang aktif dan sudah terhubung.',
+                'status' => 'Laundry hanya dapat ditandai diambil setelah statusnya Selesai.',
             ]);
         }
 
-        return back()->with('success', 'Pesan WhatsApp berhasil dikirim ke pelanggan.');
+        $transaksi->update(['status' => 'Diambil']);
+
+        return back()->with('success', 'Laundry berhasil ditandai sudah diambil.');
     }
 
     public function edit(Transaksi $transaksi)

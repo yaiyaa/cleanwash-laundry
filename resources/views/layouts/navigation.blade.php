@@ -169,7 +169,6 @@
             class="cleanwash-menu-item
                 {{ request()->routeIs('transaksi.index') ||
                    request()->routeIs('transaksi.create') ||
-                   request()->routeIs('transaksi.edit') ||
                    request()->routeIs('transaksi.show')
                    ? 'active'
                    : '' }}"

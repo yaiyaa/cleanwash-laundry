@@ -39,20 +39,22 @@ beforeEach(function () {
     ]);
 });
 
-test('completed transaction sends the formatted WhatsApp message', function () {
+test('complete action updates status and sends the formatted WhatsApp message', function () {
     Http::fake([
         'http://127.0.0.1:3001/send' => Http::response(['sent' => true]),
     ]);
 
-    $transaction = transaksiUntukWhatsApp('Selesai');
+    $transaction = transaksiUntukWhatsApp('Dicuci');
 
     $response = $this
         ->actingAs(User::factory()->create())
-        ->post(route('transaksi.whatsapp', $transaction));
+        ->post(route('transaksi.selesai', $transaction));
 
     $response
         ->assertRedirect()
-        ->assertSessionHas('success', 'Pesan WhatsApp berhasil dikirim ke pelanggan.');
+        ->assertSessionHas('success', 'Laundry selesai dan pesan WhatsApp berhasil dikirim.');
+
+    expect($transaction->refresh()->status)->toBe('Selesai');
 
     Http::assertSent(function ($request) use ($transaction) {
         return $request->url() === 'http://127.0.0.1:3001/send'
@@ -63,18 +65,46 @@ test('completed transaction sends the formatted WhatsApp message', function () {
     });
 });
 
-test('transaction that is not completed cannot send a WhatsApp message', function () {
+test('completed transaction cannot be completed and send WhatsApp again', function () {
     Http::fake();
 
+    $transaction = transaksiUntukWhatsApp('Selesai');
+
+    $response = $this
+        ->actingAs(User::factory()->create())
+        ->post(route('transaksi.selesai', $transaction));
+
+    $response
+        ->assertRedirect()
+        ->assertSessionHasErrors('status');
+
+    Http::assertNothingSent();
+});
+
+test('completed transaction can be marked as picked up', function () {
+    $transaction = transaksiUntukWhatsApp('Selesai');
+
+    $response = $this
+        ->actingAs(User::factory()->create())
+        ->post(route('transaksi.diambil', $transaction));
+
+    $response
+        ->assertRedirect()
+        ->assertSessionHas('success', 'Laundry berhasil ditandai sudah diambil.');
+
+    expect($transaction->refresh()->status)->toBe('Diambil');
+});
+
+test('unfinished transaction cannot be marked as picked up', function () {
     $transaction = transaksiUntukWhatsApp('Dicuci');
 
     $response = $this
         ->actingAs(User::factory()->create())
-        ->post(route('transaksi.whatsapp', $transaction));
+        ->post(route('transaksi.diambil', $transaction));
 
     $response
         ->assertRedirect()
-        ->assertSessionHasErrors('whatsapp');
+        ->assertSessionHasErrors('status');
 
-    Http::assertNothingSent();
+    expect($transaction->refresh()->status)->toBe('Dicuci');
 });
