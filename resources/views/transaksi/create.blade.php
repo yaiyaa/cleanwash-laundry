@@ -186,23 +186,25 @@
                         @csrf
 
 
-                        {{-- PELANGGAN --}}
+                        {{-- NAMA PELANGGAN --}}
                         <div class="mb-6">
 
                             <label
-                                for="pelanggan_id"
+                                for="nama"
                                 class="mb-2 block text-sm font-semibold text-gray-700"
                             >
-                                Pelanggan
+                                Nama Pelanggan
                                 <span style="color: #dc2626;">*</span>
                             </label>
 
-
-                            <select
-                                name="pelanggan_id"
-                                id="pelanggan_id"
+                            <input
+                                type="text"
+                                name="nama"
+                                id="nama"
+                                value="{{ old('nama') }}"
+                                placeholder="Contoh: Budi Santoso"
                                 required
-                                class="w-full rounded-xl border py-3 px-4 text-sm shadow-sm"
+                                class="w-full rounded-xl border px-4 py-3 text-sm shadow-sm"
                                 style="
                                     border-color: #dcecf7;
                                     color: #183b56;
@@ -210,23 +212,34 @@
                                 "
                             >
 
-                                <option value="">
-                                    -- Pilih Pelanggan --
-                                </option>
+                        </div>
 
-                                @foreach ($pelanggans as $pelanggan)
 
-                                    <option
-                                        value="{{ $pelanggan->id }}"
-                                        {{ old('pelanggan_id') == $pelanggan->id ? 'selected' : '' }}
-                                    >
-                                        {{ $pelanggan->nama }}
-                                        — {{ $pelanggan->no_hp }}
-                                    </option>
+                        {{-- NOMOR HP --}}
+                        <div class="mb-6">
 
-                                @endforeach
+                            <label
+                                for="no_hp"
+                                class="mb-2 block text-sm font-semibold text-gray-700"
+                            >
+                                Nomor HP
+                                <span style="color: #dc2626;">*</span>
+                            </label>
 
-                            </select>
+                            <input
+                                type="text"
+                                name="no_hp"
+                                id="no_hp"
+                                value="{{ old('no_hp') }}"
+                                placeholder="081234567890"
+                                required
+                                class="w-full rounded-xl border px-4 py-3 text-sm shadow-sm"
+                                style="
+                                    border-color: #dcecf7;
+                                    color: #183b56;
+                                    outline: none;
+                                "
+                            >
 
                         </div>
 

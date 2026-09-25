@@ -315,25 +315,6 @@
                             </div>
 
 
-                            {{-- ALAMAT --}}
-                            <div
-                                class="rounded-xl border p-4 md:col-span-2"
-                                style="
-                                    border-color: #dcecf7;
-                                    background-color: #fbfdff;
-                                "
-                            >
-
-                                <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
-                                    Alamat
-                                </p>
-
-                                <p class="mt-1 text-sm leading-6 text-gray-700">
-                                    {{ $transaksi->pelanggan->alamat }}
-                                </p>
-
-                            </div>
-
                         </div>
 
                     </div>

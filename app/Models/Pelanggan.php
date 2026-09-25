@@ -13,7 +13,6 @@ class Pelanggan extends Model
     protected $fillable = [
         'nama',
         'no_hp',
-        'alamat',
     ];
 
     public function transaksis(): HasMany

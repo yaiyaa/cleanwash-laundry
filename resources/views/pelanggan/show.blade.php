@@ -272,66 +272,6 @@
                         </div>
 
 
-                        {{-- ALAMAT --}}
-                        <div
-                            class="rounded-xl border p-5 md:col-span-2"
-                            style="
-                                border-color: #dcecf7;
-                                background-color: #fbfdff;
-                            "
-                        >
-
-                            <div class="flex items-start gap-4">
-
-                                <div
-                                    class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl"
-                                    style="
-                                        background-color: #e8f5ff;
-                                        color: #0f6fb5;
-                                    "
-                                >
-
-                                    <svg
-                                        width="21"
-                                        height="21"
-                                        fill="none"
-                                        stroke="currentColor"
-                                        viewBox="0 0 24 24"
-                                    >
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M17.657 16.657L13.414 21a2 2 0 01-2.828 0l-4.243-4.343a8 8 0 1111.314 0z"
-                                        />
-
-                                        <path
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
-                                            stroke-width="2"
-                                            d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                                        />
-                                    </svg>
-
-                                </div>
-
-
-                                <div>
-
-                                    <p class="text-xs font-semibold uppercase tracking-wide text-gray-400">
-                                        Alamat
-                                    </p>
-
-                                    <p class="mt-1 text-sm leading-6 text-gray-700">
-                                        {{ $pelanggan->alamat }}
-                                    </p>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
                     </div>
 
 

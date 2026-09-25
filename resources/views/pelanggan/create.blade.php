@@ -236,40 +236,6 @@
                         </div>
 
 
-                        {{-- ALAMAT --}}
-                        <div class="mb-7">
-
-                            <label
-                                for="alamat"
-                                class="mb-2 block text-sm font-semibold text-gray-700"
-                            >
-                                Alamat
-                                <span style="color: #dc2626;">*</span>
-                            </label>
-
-
-                            <textarea
-                                id="alamat"
-                                name="alamat"
-                                rows="4"
-                                placeholder="Masukkan alamat lengkap pelanggan..."
-                                class="w-full resize-none rounded-xl border px-4 py-3 text-sm shadow-sm transition focus:ring-2"
-                                style="
-                                    border-color: #dcecf7;
-                                    color: #183b56;
-                                    outline: none;
-                                "
-                                required
-                            >{{ old('alamat') }}</textarea>
-
-
-                            <p class="mt-2 text-xs text-gray-400">
-                                Masukkan alamat lengkap pelanggan.
-                            </p>
-
-                        </div>
-
-
                         {{-- GARIS --}}
                         <div
                             class="mb-6 border-t"

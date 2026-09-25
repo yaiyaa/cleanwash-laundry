@@ -11,7 +11,6 @@ function transaksiUntukWhatsApp(string $status): Transaksi
     $pelanggan = Pelanggan::create([
         'nama' => 'Hafizah',
         'no_hp' => '0895391518953',
-        'alamat' => 'Jakarta',
     ]);
 
     $paket = Paket::create([

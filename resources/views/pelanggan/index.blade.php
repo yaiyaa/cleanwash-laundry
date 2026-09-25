@@ -230,10 +230,6 @@
                                     No. HP
                                 </th>
 
-                                <th class="px-5 py-4 text-left text-xs font-bold uppercase tracking-wide">
-                                    Alamat
-                                </th>
-
                                 <th class="px-5 py-4 text-center text-xs font-bold uppercase tracking-wide">
                                     Aksi
                                 </th>
@@ -302,19 +298,6 @@
                                         >
                                             {{ $pelanggan->no_hp }}
                                         </span>
-
-                                    </td>
-
-
-                                    {{-- Alamat --}}
-                                    <td class="max-w-xs px-5 py-4">
-
-                                        <p
-                                            class="truncate text-sm text-gray-600"
-                                            title="{{ $pelanggan->alamat }}"
-                                        >
-                                            {{ $pelanggan->alamat }}
-                                        </p>
 
                                     </td>
 

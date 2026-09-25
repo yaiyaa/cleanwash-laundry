@@ -32,19 +32,24 @@ class TransaksiController extends Controller
 
     public function create()
     {
-        $pelanggans = Pelanggan::orderBy('nama')->get();
         $pakets = Paket::orderBy('nama_paket')->get();
 
-        return view('transaksi.create', compact('pelanggans', 'pakets'));
+        return view('transaksi.create', compact('pakets'));
     }
 
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'pelanggan_id' => 'required|exists:pelanggans,id',
+            'nama' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
             'paket_id' => 'required|exists:pakets,id',
             'berat' => 'required|numeric|min:0.1',
             'tanggal_masuk' => 'required|date',
+        ]);
+
+        $pelanggan = Pelanggan::firstOrCreate([
+            'nama' => $validated['nama'],
+            'no_hp' => $validated['no_hp'],
         ]);
 
         $paket = Paket::findOrFail($validated['paket_id']);
@@ -64,7 +69,7 @@ class TransaksiController extends Controller
         );
 
         Transaksi::create([
-            'pelanggan_id' => $validated['pelanggan_id'],
+            'pelanggan_id' => $pelanggan->id,
             'paket_id' => $validated['paket_id'],
             'berat' => $validated['berat'],
             'harga_per_kg' => $hargaPerKg,
@@ -109,12 +114,10 @@ class TransaksiController extends Controller
 
     public function edit(Transaksi $transaksi)
     {
-        $pelanggans = Pelanggan::orderBy('nama')->get();
         $pakets = Paket::orderBy('nama_paket')->get();
 
         return view('transaksi.edit', compact(
             'transaksi',
-            'pelanggans',
             'pakets'
         ));
     }
@@ -122,7 +125,8 @@ class TransaksiController extends Controller
     public function update(Request $request, Transaksi $transaksi)
     {
         $validated = $request->validate([
-            'pelanggan_id' => 'required|exists:pelanggans,id',
+            'nama' => 'required|string|max:255',
+            'no_hp' => 'required|string|max:20',
             'paket_id' => 'required|exists:pakets,id',
             'berat' => 'required|numeric|min:0.1',
             'tanggal_masuk' => 'required|date',
@@ -130,6 +134,10 @@ class TransaksiController extends Controller
         ]);
 
         $paket = Paket::findOrFail($validated['paket_id']);
+        $pelanggan = Pelanggan::firstOrCreate([
+            'nama' => $validated['nama'],
+            'no_hp' => $validated['no_hp'],
+        ]);
 
         /*
         |--------------------------------------------------------------------------
@@ -251,7 +259,7 @@ class TransaksiController extends Controller
         */
 
         $transaksi->update([
-            'pelanggan_id' => $validated['pelanggan_id'],
+            'pelanggan_id' => $pelanggan->id,
             'paket_id' => $validated['paket_id'],
             'berat' => $validated['berat'],
             'harga_per_kg' => $hargaPerKg,

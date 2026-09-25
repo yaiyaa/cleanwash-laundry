@@ -33,7 +33,6 @@ class PelangganController extends Controller
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'no_hp' => 'required|string|max:20',
-            'alamat' => 'required|string',
         ]);
 
         Pelanggan::create($validated);
@@ -67,7 +66,6 @@ class PelangganController extends Controller
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'no_hp' => 'required|string|max:20',
-            'alamat' => 'required|string',
         ]);
 
         $pelanggan->update($validated);
