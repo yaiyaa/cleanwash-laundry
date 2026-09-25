@@ -45,6 +45,15 @@
 
         </main>
 
+        @if (session('success') || session('warning') || session('error') || $errors->any())
+            <div
+                data-cleanwash-flash
+                data-type="{{ $errors->any() || session('error') ? 'error' : (session('warning') ? 'warning' : 'success') }}"
+                data-message="{{ $errors->any() ? $errors->first() : (session('success') ?? session('warning') ?? session('error')) }}"
+                hidden
+            ></div>
+        @endif
+
     </div>
 
 </body>

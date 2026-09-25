@@ -77,38 +77,6 @@
             </div>
 
 
-            {{-- NOTIFIKASI --}}
-            @if (session('success'))
-
-                <div
-                    class="mb-6 rounded-xl border px-4 py-3"
-                    style="
-                        background-color: #ecfdf5;
-                        border-color: #bbf7d0;
-                        color: #166534;
-                    "
-                >
-
-                    <div class="flex items-center gap-3">
-
-                        <div
-                            class="flex h-8 w-8 items-center justify-center rounded-full"
-                            style="background-color: #dcfce7;"
-                        >
-                            ✓
-                        </div>
-
-                        <p class="text-sm font-semibold">
-                            {{ session('success') }}
-                        </p>
-
-                    </div>
-
-                </div>
-
-            @endif
-
-
             {{-- CARD UTAMA --}}
             <div
                 class="overflow-hidden rounded-2xl border bg-white shadow-sm"

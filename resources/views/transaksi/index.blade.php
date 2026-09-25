@@ -136,53 +136,6 @@
             </div>
 
 
-            {{-- ALERT SUCCESS --}}
-            @if (session('success'))
-
-                <div
-                    class="mb-6 flex items-center gap-3 rounded-xl border px-4 py-3"
-                    style="
-                        background-color: #ecfdf5;
-                        border-color: #bbf7d0;
-                    "
-                >
-
-                    <div
-                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-                        style="
-                            background-color: #d1fae5;
-                            color: #16a36a;
-                        "
-                    >
-                        ✓
-                    </div>
-
-                    <p
-                        class="text-sm font-semibold"
-                        style="color: #166534;"
-                    >
-                        {{ session('success') }}
-                    </p>
-
-                </div>
-
-            @endif
-
-            @if (session('warning'))
-                <div
-                    class="mb-6 flex items-center gap-3 rounded-xl border px-4 py-3"
-                    style="
-                        background-color: #fff7ed;
-                        border-color: #fed7aa;
-                    "
-                >
-                    <p class="text-sm font-semibold" style="color: #c2410c;">
-                        {{ session('warning') }}
-                    </p>
-                </div>
-            @endif
-
-
             {{-- CARD DATA --}}
             <div
                 class="overflow-hidden rounded-2xl border bg-white shadow-sm"
@@ -524,7 +477,7 @@
                                                 <form
                                                     action="{{ route('transaksi.diambil', $transaksi) }}"
                                                     method="POST"
-                                                    onsubmit="return confirm('Tandai laundry ini sudah diambil pelanggan?')"
+                                                    data-confirm="Tandai laundry ini sudah diambil pelanggan?"
                                                 >
                                                     @csrf
 
@@ -545,7 +498,7 @@
                                                 <form
                                                     action="{{ route('transaksi.selesai', $transaksi) }}"
                                                     method="POST"
-                                                    onsubmit="return confirm('Tandai laundry ini sebagai selesai dan kirim WhatsApp?')"
+                                                    data-confirm="Tandai laundry ini sebagai selesai dan kirim WhatsApp?"
                                                 >
                                                     @csrf
 
@@ -590,7 +543,7 @@
                                             <form
                                                 action="{{ route('transaksi.destroy', $transaksi) }}"
                                                 method="POST"
-                                                onsubmit="return confirm('Yakin ingin menghapus transaksi ini?')"
+                                                data-confirm="Yakin ingin menghapus transaksi ini?"
                                             >
 
                                                 @csrf

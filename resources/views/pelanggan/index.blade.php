@@ -21,39 +21,6 @@
 
 
             {{-- =====================================================
-                 NOTIFIKASI
-            ====================================================== --}}
-
-            @if (session('success'))
-
-                <div
-                    class="mb-6 flex items-center gap-3 rounded-xl border px-4 py-3"
-                    style="background-color: #ecfdf5; border-color: #bbf7d0; color: #15803d;"
-                >
-
-                    <div
-                        class="flex h-9 w-9 shrink-0 items-center justify-center rounded-full"
-                        style="background-color: #dcfce7;"
-                    >
-                        ✓
-                    </div>
-
-                    <div>
-                        <p class="text-sm font-semibold">
-                            Berhasil
-                        </p>
-
-                        <p class="text-sm">
-                            {{ session('success') }}
-                        </p>
-                    </div>
-
-                </div>
-
-            @endif
-
-
-            {{-- =====================================================
                  HEADER CARD
             ====================================================== --}}
 
@@ -395,7 +362,7 @@
                                             <form
                                                 action="{{ route('pelanggan.destroy', $pelanggan) }}"
                                                 method="POST"
-                                                onsubmit="return confirm('Yakin ingin menghapus pelanggan ini?')"
+                                                data-confirm="Yakin ingin menghapus pelanggan ini?"
                                             >
 
                                                 @csrf

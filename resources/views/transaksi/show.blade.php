@@ -22,18 +22,6 @@
 
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
-            @if (session('success'))
-                <div class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
-                    {{ session('success') }}
-                </div>
-            @endif
-
-            @if ($errors->has('whatsapp'))
-                <div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
-                    {{ $errors->first('whatsapp') }}
-                </div>
-            @endif
-
             {{-- KEMBALI --}}
             <div class="mb-6">
 

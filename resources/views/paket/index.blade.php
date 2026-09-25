@@ -149,34 +149,6 @@
             </div>
 
 
-            {{-- ALERT SUKSES --}}
-            @if (session('success'))
-
-                <div
-                    class="mb-6 flex items-center gap-3 rounded-xl border px-4 py-3"
-                    style="
-                        background-color: #f0fdf4;
-                        border-color: #bbf7d0;
-                        color: #166534;
-                    "
-                >
-
-                    <div
-                        class="flex h-8 w-8 shrink-0 items-center justify-center rounded-full"
-                        style="background-color: #dcfce7;"
-                    >
-                        ✓
-                    </div>
-
-                    <p class="text-sm font-semibold">
-                        {{ session('success') }}
-                    </p>
-
-                </div>
-
-            @endif
-
-
             {{-- CARD DATA --}}
             <div
                 class="overflow-hidden rounded-2xl border bg-white shadow-sm"
@@ -465,7 +437,7 @@
                                                 action="{{ route('paket.destroy', $paket) }}"
                                                 method="POST"
                                                 class="inline"
-                                                onsubmit="return confirm('Yakin ingin menghapus paket ini?')"
+                                                data-confirm="Yakin ingin menghapus paket ini?"
                                             >
 
                                                 @csrf
