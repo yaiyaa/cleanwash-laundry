@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Pelanggan;
 use App\Models\Paket;
+use App\Models\Pelanggan;
 use App\Models\Transaksi;
+use App\Services\WhatsAppService;
 use Illuminate\Http\Request;
+use Throwable;
 
 class TransaksiController extends Controller
 {
@@ -54,9 +56,9 @@ class TransaksiController extends Controller
         $tanggalSelesai = date(
             'Y-m-d',
             strtotime(
-                $validated['tanggal_masuk'] .
-                ' +' .
-                $paket->estimasi_hari .
+                $validated['tanggal_masuk'].
+                ' +'.
+                $paket->estimasi_hari.
                 ' days'
             )
         );
@@ -82,6 +84,27 @@ class TransaksiController extends Controller
         $transaksi->load(['pelanggan', 'paket']);
 
         return view('transaksi.show', compact('transaksi'));
+    }
+
+    public function sendWhatsApp(Transaksi $transaksi, WhatsAppService $whatsappService)
+    {
+        if ($transaksi->status !== 'Selesai') {
+            return back()->withErrors([
+                'whatsapp' => 'Pesan WhatsApp hanya dapat dikirim saat status transaksi Selesai.',
+            ]);
+        }
+
+        try {
+            $whatsappService->sendLaundryCompletedMessage($transaksi);
+        } catch (Throwable $exception) {
+            report($exception);
+
+            return back()->withErrors([
+                'whatsapp' => 'Pesan gagal dikirim. Pastikan bot WhatsApp sedang aktif dan sudah terhubung.',
+            ]);
+        }
+
+        return back()->with('success', 'Pesan WhatsApp berhasil dikirim ke pelanggan.');
     }
 
     public function edit(Transaksi $transaksi)
@@ -154,7 +177,7 @@ class TransaksiController extends Controller
                 // Jika sudah Diambil, status tidak boleh diubah lagi.
                 return back()
                     ->withErrors([
-                        'status' => 'Transaksi yang sudah diambil tidak dapat diubah lagi.'
+                        'status' => 'Transaksi yang sudah diambil tidak dapat diubah lagi.',
                     ])
                     ->withInput();
             }
@@ -169,11 +192,10 @@ class TransaksiController extends Controller
 
                 return back()
                     ->withErrors([
-                        'status' =>
-                            'Status tidak dapat dilewati. ' .
-                            'Status berikutnya harus "' .
-                            $statusBerikutnya .
-                            '".'
+                        'status' => 'Status tidak dapat dilewati. '.
+                            'Status berikutnya harus "'.
+                            $statusBerikutnya.
+                            '".',
                     ])
                     ->withInput();
             }
@@ -186,12 +208,12 @@ class TransaksiController extends Controller
         */
 
         if (
-            !$paket->menggunakan_setrika &&
+            ! $paket->menggunakan_setrika &&
             $statusBaru === 'Disetrika'
         ) {
             return back()
                 ->withErrors([
-                    'status' => 'Paket ini tidak menggunakan proses setrika.'
+                    'status' => 'Paket ini tidak menggunakan proses setrika.',
                 ])
                 ->withInput();
         }
@@ -215,9 +237,9 @@ class TransaksiController extends Controller
         $tanggalSelesai = date(
             'Y-m-d',
             strtotime(
-                $validated['tanggal_masuk'] .
-                ' +' .
-                $paket->estimasi_hari .
+                $validated['tanggal_masuk'].
+                ' +'.
+                $paket->estimasi_hari.
                 ' days'
             )
         );

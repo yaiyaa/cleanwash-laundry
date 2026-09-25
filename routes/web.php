@@ -1,13 +1,12 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\PelangganController;
-use App\Http\Controllers\PaketController;
-use App\Http\Controllers\TransaksiController;
-use App\Http\Controllers\ProfileController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LaporanController;
-
+use App\Http\Controllers\PaketController;
+use App\Http\Controllers\PelangganController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TransaksiController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,7 +18,6 @@ Route::get('/', function () {
     return redirect()->route('dashboard');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Semua Halaman CleanWash
@@ -28,33 +26,30 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/laporan-transaksi', [LaporanController::class, 'transaksi'])
-    ->name('laporan.transaksi');
+        ->name('laporan.transaksi');
 
-Route::get('/laporan-transaksi/export/pdf', [
-    LaporanController::class,
-    'exportPdf'
-])->name('laporan.export.pdf');
+    Route::get('/laporan-transaksi/export/pdf', [
+        LaporanController::class,
+        'exportPdf',
+    ])->name('laporan.export.pdf');
 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])
         ->middleware('verified')
         ->name('dashboard');
 
-
     // Pelanggan
     Route::resource('pelanggan', PelangganController::class);
-
 
     // Paket Laundry
     Route::resource('paket', PaketController::class);
 
-
     // Transaksi Laundry
     Route::resource('transaksi', TransaksiController::class);
+    Route::post('/transaksi/{transaksi}/whatsapp', [TransaksiController::class, 'sendWhatsApp'])
+        ->name('transaksi.whatsapp');
     Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayat'])
-    ->name('transaksi.riwayat');
-
-
+        ->name('transaksi.riwayat');
 
     /*
     |--------------------------------------------------------------------------
@@ -72,7 +67,6 @@ Route::get('/laporan-transaksi/export/pdf', [
         ->name('profile.destroy');
 
 });
-
 
 /*
 |--------------------------------------------------------------------------

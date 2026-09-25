@@ -22,6 +22,18 @@
 
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 
+            @if (session('success'))
+                <div class="mb-6 rounded-xl border border-green-200 bg-green-50 px-4 py-3 text-sm font-semibold text-green-800">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if ($errors->has('whatsapp'))
+                <div class="mb-6 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm font-semibold text-red-800">
+                    {{ $errors->first('whatsapp') }}
+                </div>
+            @endif
+
             {{-- KEMBALI --}}
             <div class="mb-6">
 
@@ -599,40 +611,6 @@
                     {{-- PESAN WHATSAPP --}}
                     @if ($transaksi->status === 'Selesai')
 
-                        @php
-
-                            $nomorWhatsApp = preg_replace(
-                                '/[^0-9]/',
-                                '',
-                                $transaksi->pelanggan->no_hp
-                            );
-
-                            // Jika nomor diawali 0, ubah menjadi 62
-                            if (str_starts_with($nomorWhatsApp, '0')) {
-                                $nomorWhatsApp = '62' . substr($nomorWhatsApp, 1);
-                            }
-
-                            $pesanWhatsApp =
-                                'Halo ' . $transaksi->pelanggan->nama . ' ' . "\n\n" .
-                                'Laundry Anda sudah SELESAI dan dapat diambil. ' . "\n\n" .
-                                'Detail Laundry:' . "\n" .
-                                'Kode Transaksi: #' . $transaksi->id . "\n" .
-                                'Paket: ' . $transaksi->paket->nama_paket . "\n" .
-                                'Berat: ' . $transaksi->berat . ' Kg' . "\n" .
-                                'Total Pembayaran: Rp ' .
-                                number_format($transaksi->total_harga, 0, ',', '.') . "\n\n" .
-                                'Silakan datang ke CleanWash untuk mengambil laundry Anda.' . "\n\n" .
-                                'Terima kasih telah menggunakan layanan CleanWash.';
-
-                            $linkWhatsApp =
-                                'https://wa.me/' .
-                                $nomorWhatsApp .
-                                '?text=' .
-                                urlencode($pesanWhatsApp);
-
-                        @endphp
-
-
                         {{-- KOTAK NOTIFIKASI --}}
                         <div
                             class="mb-7 rounded-2xl border p-5"
@@ -674,17 +652,20 @@
 
 
                                 {{-- TOMBOL WHATSAPP --}}
-                                <a
-                                    href="{{ $linkWhatsApp }}"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
+                                <form
+                                    action="{{ route('transaksi.whatsapp', $transaksi) }}"
+                                    method="POST"
+                                >
+                                    @csrf
+
+                                    <button
+                                        type="submit"
                                     class="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-2.5 text-sm font-bold text-white transition hover:opacity-90"
                                     style="
                                         background-color: #16a34a;
-                                        text-decoration: none;
                                         box-shadow: 0 5px 14px rgba(22,163,74,0.18);
                                     "
-                                >
+                                    >
 
                                     <svg
                                         width="19"
@@ -703,9 +684,9 @@
 
                                     </svg>
 
-                                    Kirim WhatsApp
-
-                                </a>
+                                        Kirim WhatsApp
+                                    </button>
+                                </form>
 
                             </div>
 
