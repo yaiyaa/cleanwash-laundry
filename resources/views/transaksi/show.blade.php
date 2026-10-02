@@ -510,20 +510,32 @@
                     {{-- BUTTON --}}
                     <div class="flex flex-col-reverse gap-3 sm:flex-row sm:justify-end">
 
-                        <a
-                            href="{{ route('transaksi.index') }}"
-                            class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold"
-                            style="
-                                background-color: #f3f4f6;
-                                color: #374151;
-                                text-decoration: none;
-                            "
-                        >
-                            Kembali
-                        </a>
+    <a
+        href="{{ route('transaksi.kwitansi', $transaksi) }}"
+        target="_blank"
+        class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold"
+        style="
+            background-color: #0f6fb5;
+            color: white;
+            text-decoration: none;
+        "
+    >
+        🖨 Cetak Kwitansi
+    </a>
 
+    <a
+        href="{{ route('transaksi.index') }}"
+        class="inline-flex items-center justify-center rounded-xl px-5 py-2.5 text-sm font-semibold"
+        style="
+            background-color: #f3f4f6;
+            color: #374151;
+            text-decoration: none;
+        "
+    >
+        Kembali
+    </a>
 
-                    </div>
+</div>
 
                 </div>
 

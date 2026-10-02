@@ -51,8 +51,15 @@ Route::middleware('auth')->group(function () {
         ->name('transaksi.selesai');
     Route::post('/transaksi/{transaksi}/diambil', [TransaksiController::class, 'diambil'])
         ->name('transaksi.diambil');
+
+    Route::get('/transaksi/{transaksi}/kwitansi', [
+    TransaksiController::class,
+    'kwitansi'
+])->name('transaksi.kwitansi');
+
     Route::get('/riwayat-transaksi', [TransaksiController::class, 'riwayat'])
         ->name('transaksi.riwayat');
+
 
     /*
     |--------------------------------------------------------------------------
